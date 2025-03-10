@@ -51,6 +51,8 @@ typedef struct s_fractol
 	double shift_x;
 	double shift_y;
 	double zoom;
+	double julia_x;
+	double julia_y;
 }               t_fractol;
 
 int ft_strncmp(char *s1, char *s2, int size);
