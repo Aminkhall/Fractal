@@ -10,6 +10,16 @@ void data_init(t_fractol *fractol)
 {
     fractol->escaped_val = 4;
     fractol->iterations_def = 42;   
+    fractol->shift_x = 0.0;
+    fractol->shift_y = 0.0;
+    fractol->zoom = 1.0;
+}
+
+void event_init(t_fractol *fractol)
+{
+   mlx_key_hook(fractol->mlx_window, key_hook, fractol);
+   mlx_mouse_hook(fractol->mlx_window, mouse_hook, fractol);
+   mlx_hook(fractol->mlx_window, 17, 0, close_handler, fractol);
 }
 
 void fraclot_init(t_fractol *fractol)

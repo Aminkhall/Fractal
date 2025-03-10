@@ -19,8 +19,8 @@ void handler_pixels(int x, int y, t_fractol *fractol)
     i = 0;
     z.x = 0.0;
     z.y = 0.0;
-    p.x = scaleBetween(x, -2, 2, 0, WIDTH);
-    p.y = scaleBetween(y, -2, 2, 0, HEIGTH);
+    p.x = (scaleBetween(x, -2, 2, 0, WIDTH) * fractol->zoom)+ fractol->shift_x;
+    p.y = (scaleBetween(y, 2, -2, 0, HEIGTH) * fractol->zoom)+ fractol->shift_y;
     while (i < fractol->iterations_def)
     {
         z = add_complex(square_complex(z), p);

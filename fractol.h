@@ -22,7 +22,6 @@ typedef struct s_complex
 #define GREEN       0x00FF00  // RGB(0, 255, 0)
 #define BLUE        0x0000FF  // RGB(0, 0, 255)
 
-// Psychedelic colors
 #define MAGENTA_BURST   0xFF00FF  // A vibrant magenta
 #define LIME_SHOCK      0xCCFF00  // A blinding lime
 #define NEON_ORANGE     0xFF6600  // A blazing neon orange
@@ -49,6 +48,9 @@ typedef struct s_fractol
     t_img img;
 	double escaped_val;
 	int iterations_def;
+	double shift_x;
+	double shift_y;
+	double zoom;
 }               t_fractol;
 
 int ft_strncmp(char *s1, char *s2, int size);
@@ -58,5 +60,8 @@ void fractol_render(t_fractol *fractol);
 void data_init(t_fractol *fractol);
 t_complex add_complex(t_complex z1, t_complex z2);
 t_complex square_complex(t_complex z);
+int close_handler(t_fractol *fractol);
+int key_hook(int keycode, t_fractol *fractol);
+int mouse_hook(int button, int x, int y, t_fractol *fractol);
 
 #endif
