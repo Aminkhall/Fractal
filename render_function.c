@@ -32,6 +32,7 @@ void handler_pixels(int x, int y, t_fractol *fractol)
         }
         ++i;
     }
+    pixel_put(x, y, &fractol->img, WHITE);
 }
 
 void fractol_render(t_fractol *fractol)

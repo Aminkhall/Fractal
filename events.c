@@ -13,17 +13,17 @@ int key_hook(int keycode, t_fractol *fractol)
     printf("%d\n",keycode);
     if (keycode == 53) //ESCAPE
         close_handler(fractol);
-    else if (keycode == 65361) // LEFT
-        fractol->shift_x += 0.5;
-    else if (keycode == 65363) // RIGHT
-        fractol->shift_x -= 0.5;
-    else if (keycode == 65362) // UP
-        fractol->shift_y -= 0.5;
-    else if (keycode == 65364) // DOWN
-        fractol->shift_y += 0.5;
-    else if (keycode == 61) //PLUS
+    else if (keycode == 123) // LEFT
+        fractol->shift_x += (0.5 * fractol->zoom);
+    else if (keycode == 124) // RIGHT
+        fractol->shift_x -= (0.5 * fractol->zoom);
+    else if (keycode == 126) // UP
+        fractol->shift_y -= (0.5 * fractol->zoom);
+    else if (keycode == 125) // DOWN
+        fractol->shift_y += (0.5 * fractol->zoom);
+    else if (keycode == 69) //PLUS
         fractol->iterations_def += 10;
-    else if (keycode == 45) //MINUS
+    else if (keycode == 78) //MINUS
         fractol->iterations_def -= 10;
     fractol_render(fractol);
     return (0);
