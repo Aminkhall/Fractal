@@ -2,7 +2,11 @@
 
 void pixel_put(int x, int y, t_img *img, int color)
 {
-    
+    int pos;
+
+    pos = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
+    *(unsigned int *)(img->addr + pos) = color;
+
 }
 
 void handler_pixels(int x, int y, t_fractol *fractol)
@@ -23,6 +27,7 @@ void handler_pixels(int x, int y, t_fractol *fractol)
         if (z.x * z.x + z.y * z.y > fractol->escaped_val)
         {
             color = scaleBetween(i, BLACK, WHITE, 0, fractol->iterations_def);
+            pixel_put(x, y, &fractol->img, color);
             return ;
         }
         ++i;
@@ -46,5 +51,5 @@ void fractol_render(t_fractol *fractol)
         }
         ++y;
     }
-    
+    mlx_put_image_to_window(fractol->mlx_con, fractol->mlx_window, fractol->img.img, 0, 0);
 }

@@ -10,7 +10,6 @@ int main(int ac, char **av)
         fractol.name = av[1];
         fraclot_init(&fractol);
         fractol_render(&fractol);
-        data_init(&fractol);
     }
     else
     {

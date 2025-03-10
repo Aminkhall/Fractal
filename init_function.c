@@ -33,4 +33,5 @@ void fraclot_init(t_fractol *fractol)
         ft_error();
     }
     fractol->img.addr = mlx_get_data_addr(fractol->img.img, &fractol->img.bits_per_pixel, &fractol->img.line_length, &fractol->img.endian);
+    data_init(fractol);
 }
