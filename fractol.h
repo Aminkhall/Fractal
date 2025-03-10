@@ -5,7 +5,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <math.h>
-# include "minilibx_opengl_20191021/mlx.h"
+# include <mlx.h>
 
 #define HEIGTH 800
 #define WIDTH 800

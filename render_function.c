@@ -19,12 +19,12 @@ void handler_pixels(int x, int y, t_fractol *fractol)
     i = 0;
     z.x = 0.0;
     z.y = 0.0;
-    p.x = (scaleBetween(x, -2, 2, 0, WIDTH) * fractol->zoom)+ fractol->shift_x;
-    p.y = (scaleBetween(y, 2, -2, 0, HEIGTH) * fractol->zoom)+ fractol->shift_y;
+    p.x = (scaleBetween(x, -2, 2, 0, WIDTH) * fractol->zoom) + fractol->shift_x;
+    p.y = (scaleBetween(y, 2, -2, 0, HEIGTH) * fractol->zoom) + fractol->shift_y;
     while (i < fractol->iterations_def)
     {
         z = add_complex(square_complex(z), p);
-        if (z.x * z.x + z.y * z.y > fractol->escaped_val)
+        if ((z.x * z.x) + (z.y * z.y) > fractol->escaped_val)
         {
             color = scaleBetween(i, BLACK, WHITE, 0, fractol->iterations_def);
             pixel_put(x, y, &fractol->img, color);
@@ -32,7 +32,6 @@ void handler_pixels(int x, int y, t_fractol *fractol)
         }
         ++i;
     }
-    
 }
 
 void fractol_render(t_fractol *fractol)

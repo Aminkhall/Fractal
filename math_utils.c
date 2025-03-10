@@ -2,7 +2,7 @@
 
 double scaleBetween(double unscaledNum, double minAllowed, double maxAllowed, double min, double max) 
 {
-  return (maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed;
+  return ((maxAllowed - minAllowed) * (unscaledNum - min) / (max - min) + minAllowed);
 }
 
 

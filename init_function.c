@@ -25,12 +25,11 @@ void event_init(t_fractol *fractol)
 void fraclot_init(t_fractol *fractol)
 {
     fractol->mlx_con = mlx_init();
-    if (!fraclot_init)
+    if (!fractol->mlx_con)
         ft_error();
     fractol->mlx_window = mlx_new_window(fractol->mlx_con, WIDTH, HEIGTH, fractol->name);
     if (!fractol->mlx_window)
     {
-        mlx_destroy_display(fractol->mlx_con);
         free(fractol->mlx_con);
         ft_error();
     }
@@ -38,10 +37,10 @@ void fraclot_init(t_fractol *fractol)
     if (!fractol->img.img)
     {
         mlx_destroy_window(fractol->mlx_con, fractol->mlx_window);
-        mlx_destroy_display(fractol->mlx_con);
         free(fractol->mlx_con);
         ft_error();
     }
     fractol->img.addr = mlx_get_data_addr(fractol->img.img, &fractol->img.bits_per_pixel, &fractol->img.line_length, &fractol->img.endian);
     data_init(fractol);
+    event_init(fractol);
 }
