@@ -28,9 +28,13 @@ double ft_atod(char *s)
 {
     int sign;
     long integ;
+    double dev;
     double doub;
 
     sign = 1;
+    dev = 1;
+    doub = 0.0;
+    integ = 0;
     if (*s == '-')
     {
         sign *= -1;
@@ -43,9 +47,12 @@ double ft_atod(char *s)
         integ = (integ * 10) + (*s - '0');
         ++s; 
     }
+    if (*s == '.')
+        ++s;
     while (*s && (*s >= '0' && *s <= '9'))
     {
-        doub = (doub / 10) + ((*s - '0') / 10);
+        dev /= 10;
+        doub = doub + ((*s - '0') * dev);
         ++s;
     }
     return ((integ + doub) * sign);

@@ -65,5 +65,6 @@ t_complex square_complex(t_complex z);
 int close_handler(t_fractol *fractol);
 int key_hook(int keycode, t_fractol *fractol);
 int mouse_hook(int button, int x, int y, t_fractol *fractol);
+double ft_atod(char *s);
 
 #endif

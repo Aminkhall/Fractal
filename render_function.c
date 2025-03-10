@@ -9,6 +9,20 @@ void pixel_put(int x, int y, t_img *img, int color)
 
 }
 
+void mandel_or_juli(t_complex *z, t_complex *p, t_fractol *fractol)
+{
+    if (!ft_strncmp(fractol->name, "Julia", 5))
+    {
+        p->x = fractol->julia_x;
+        p->y = fractol->julia_y;
+    }
+    else
+    {
+        p->x = z->x;
+        p->y = z->y;
+    }
+}
+
 void handler_pixels(int x, int y, t_fractol *fractol)
 {
     t_complex z;
@@ -17,10 +31,9 @@ void handler_pixels(int x, int y, t_fractol *fractol)
     int color;
 
     i = 0;
-    z.x = 0.0;
-    z.y = 0.0;
-    p.x = (scaleBetween(x, -2, 2, 0, WIDTH) * fractol->zoom) + fractol->shift_x;
-    p.y = (scaleBetween(y, 2, -2, 0, HEIGTH) * fractol->zoom) + fractol->shift_y;
+    z.x = (scaleBetween(x, -2, 2, 0, WIDTH) * fractol->zoom) + fractol->shift_x;
+    z.y = (scaleBetween(y, -2, 2, 0, HEIGTH) * fractol->zoom) + fractol->shift_y;
+    mandel_or_juli(&z, &p, fractol);
     while (i < fractol->iterations_def)
     {
         z = add_complex(square_complex(z), p);
@@ -32,7 +45,7 @@ void handler_pixels(int x, int y, t_fractol *fractol)
         }
         ++i;
     }
-    pixel_put(x, y, &fractol->img, WHITE);
+    pixel_put(x, y, &fractol->img, BLACK);
 }
 
 void fractol_render(t_fractol *fractol)
