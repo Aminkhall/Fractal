@@ -50,9 +50,12 @@ typedef struct s_fractol
 	int iterations_def;
 	double shift_x;
 	double shift_y;
-	double zoom;
 	double julia_x;
 	double julia_y;
+	int color;
+	double zoom;
+	double cursor_x;
+    double cursor_y;
 }               t_fractol;
 
 int ft_strncmp(char *s1, char *s2, int size);
@@ -65,6 +68,7 @@ t_complex square_complex(t_complex z);
 int close_handler(t_fractol *fractol);
 int key_hook(int keycode, t_fractol *fractol);
 int mouse_hook(int button, int x, int y, t_fractol *fractol);
+int     motion_notify(int x, int y, t_fractol *fractol);
 double ft_atod(char *s);
 
 #endif

@@ -4,7 +4,7 @@ void pixel_put(int x, int y, t_img *img, int color)
 {
     int pos;
 
-    pos = (y * img->line_length) + (x * (img->bits_per_pixel / 8));
+    pos = (y * img->line_length + x * (img->bits_per_pixel / 8));
     *(unsigned int *)(img->addr + pos) = color;
 
 }
@@ -33,6 +33,7 @@ void handler_pixels(int x, int y, t_fractol *fractol)
     i = 0;
     z.x = (scaleBetween(x, -2, 2, 0, WIDTH) * fractol->zoom) + fractol->shift_x;
     z.y = (scaleBetween(y, -2, 2, 0, HEIGTH) * fractol->zoom) + fractol->shift_y;
+    color = fractol->color;
     mandel_or_juli(&z, &p, fractol);
     while (i < fractol->iterations_def)
     {
@@ -45,7 +46,7 @@ void handler_pixels(int x, int y, t_fractol *fractol)
         }
         ++i;
     }
-    pixel_put(x, y, &fractol->img, BLACK);
+    pixel_put(x, y, &fractol->img, color);
 }
 
 void fractol_render(t_fractol *fractol)
@@ -53,6 +54,7 @@ void fractol_render(t_fractol *fractol)
     int x;
     int y;
 
+    mlx_clear_window(fractol->mlx_con, fractol->mlx_window);
     y = 0;
     while (y < HEIGTH)
     {

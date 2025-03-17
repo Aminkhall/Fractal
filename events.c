@@ -10,32 +10,42 @@ int close_handler(t_fractol *fractol)
 
 int key_hook(int keycode, t_fractol *fractol)
 {
-    if (keycode == 53) //ESCAPE
+    if (keycode == 53)
         close_handler(fractol);
-    else if (keycode == 123) // LEFT
+    else if (keycode == 123)
         fractol->shift_x += (0.5 * fractol->zoom);
-    else if (keycode == 124) // RIGHT
+    else if (keycode == 124)
         fractol->shift_x -= (0.5 * fractol->zoom);
-    else if (keycode == 126) // UP
+    else if (keycode == 126)
         fractol->shift_y -= (0.5 * fractol->zoom);
-    else if (keycode == 125) // DOWN
+    else if (keycode == 125)
         fractol->shift_y += (0.5 * fractol->zoom);
-    else if (keycode == 69) //PLUS
+    else if (keycode == 69)
         fractol->iterations_def += 10;
-    else if (keycode == 78) //MINUS
+    else if (keycode == 78)
         fractol->iterations_def -= 10;
+    else if (keycode == 49)
+        fractol->color += (fractol->color << 8);
+    fractol_render(fractol);
+    return (0);
+}
+
+int     motion_notify(int x, int y, t_fractol *fractol)
+{
+    fractol->cursor_x = scaleBetween(x, -2, 2, 0, WIDTH) * fractol->zoom + fractol->shift_x;
+    fractol->cursor_y = scaleBetween(y, -2, 2, 0, HEIGTH) * fractol->zoom + fractol->shift_y;
     fractol_render(fractol);
     return (0);
 }
 
 int mouse_hook(int button, int x, int y, t_fractol *fractol)
 {
-    (void)x;
-    (void)y;
     if (button == 4)
-        fractol->zoom *= 1.1;
+        fractol->zoom *= 1.3;
     else if (button == 5)
         fractol->zoom *= 0.9;
+    fractol->shift_x = fractol->cursor_x - (scaleBetween(x, -2, 2, 0, WIDTH) * fractol->zoom);
+    fractol->shift_y = fractol->cursor_y - (scaleBetween(y, -2, 2, 0, HEIGTH) * fractol->zoom);
     fractol_render(fractol);
     return (0);
 }

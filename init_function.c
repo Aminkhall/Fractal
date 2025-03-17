@@ -2,17 +2,20 @@
 
 void ft_error(void)
 {
-    perror("Problem with maloc");
+    perror("Problem with malloc");
     exit(1);
 }
 
 void data_init(t_fractol *fractol)
 {
     fractol->escaped_val = 4;
-    fractol->iterations_def = 42;   
+    fractol->iterations_def = 84;   
     fractol->shift_x = 0.0;
     fractol->shift_y = 0.0;
     fractol->zoom = 1.0;
+    fractol->color = WHITE;
+    fractol->cursor_x = 0.0; // Initial cursor X position
+    fractol->cursor_y = 0.0; // Initial cursor Y position
 }
 
 void event_init(t_fractol *fractol)
@@ -20,6 +23,7 @@ void event_init(t_fractol *fractol)
    mlx_key_hook(fractol->mlx_window, key_hook, fractol);
    mlx_mouse_hook(fractol->mlx_window, mouse_hook, fractol);
    mlx_hook(fractol->mlx_window, 17, 0, close_handler, fractol);
+   mlx_hook(fractol->mlx_window, 6, 0, motion_notify, fractol);
 }
 
 void fraclot_init(t_fractol *fractol)
