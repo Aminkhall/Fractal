@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:55:04 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 01:26:42 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:35:27 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@
 
 # define HEIGTH 800
 # define WIDTH 800
-# define ERROR_TEXT "\t\t\tTry again \n\tEnter \"Mandelbrot\"\
-					\n\tOr \"Julia\"\t \"Value1\"\t \"Value2\"\n"
+// # define ERROR_TEXT
 
 typedef struct s_complex
 {
@@ -73,6 +72,8 @@ int			key_hook(int keycode, t_fractol *fractol);
 int			mouse_hook(int button, int x, int y, t_fractol *fractol);
 int			motion_notify(int x, int y, t_fractol *fractol);
 double		ft_atod(char *s);
-void		ft_error(int flag);
+void		ft_error(void);
+void		print_err(void);
+void		ft_putstr(char *str);
 
 #endif

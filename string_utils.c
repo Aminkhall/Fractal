@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:10:44 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 14:32:10 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:34:45 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,16 @@
 
 int	ft_strncmp(char *s1, char *s2, int size)
 {
+	int	i;
+
 	if (!s1 || !s2 || size <= 0)
 		return (0);
+	i = -1;
+	while (s1[++i])
+	{
+		if (s1[i] >= 'A' && s1[i] <= 'Z')
+			s1[i] += 32;
+	}
 	while (*s1 && *s1 == *s2 && size)
 	{
 		++s1;
@@ -25,7 +33,35 @@ int	ft_strncmp(char *s1, char *s2, int size)
 	return (*s1 - *s2);
 }
 
-char	*skip_space_or_signs(char *str, int *sign)
+void	ft_putstr(char *str)
+{
+	if (!str)
+		return ;
+	while (*str)
+		write(2, &(*str++), 1);
+}
+
+void	print_err(void)
+{
+	ft_putstr("\n");
+	ft_putstr(" +------------------ Let me help you! ---------------------+\n");
+	ft_putstr(" | Usage: ./fractol [mandelbrot / julia 'c_real' 'c_imag'  |\n");
+	ft_putstr(" |                                                         |\n");
+	ft_putstr(" | e.g: ./fractol mandelbrot                               |\n");
+	ft_putstr(" |      ./fractol julia -0.4 0.6                           |\n");
+	ft_putstr(" |                                                         |\n");
+	ft_putstr(" |----------------------- KEYBOARD ------------------------|\n");
+	ft_putstr(" |                                                         |\n");
+	ft_putstr(" | Press the arrow keys to change the space/viewpoint      |\n");
+	ft_putstr(" | Press +/- keys to change the number of iterations       |\n");
+	ft_putstr(" | Use mouse scroll to zoom in and out of the fractal      |\n");
+	ft_putstr(" | Press Space to change the color of the fractal          |\n");
+	ft_putstr(" +---------------------------------------------------------+\n");
+	ft_putstr("\n");
+	exit(1);
+}
+
+char	*check_pars(char *str, int *sign)
 {
 	int	i;
 	int	count;
@@ -42,27 +78,14 @@ char	*skip_space_or_signs(char *str, int *sign)
 	while (str[i])
 	{
 		if (str[i] != '.' && (str[i] < '0' || str[i] > '9'))
-			ft_error(1);
+			print_err();
 		if (str[i] == '.')
 			++count;
 		++i;
 	}
 	if (count > 1 || (count && i == 1))
-		ft_error(1);
+		print_err();
 	return (str);
-}
-
-int	ft_atoi(char *str)
-{
-	long	num;
-
-	num = 0;
-	while (*str && *str != '.' && (*str >= '0' && *str <= '9'))
-	{
-		num = (num * 10) + (*str - '0');
-		++str;
-	}
-	return (num);
 }
 
 double	ft_atod(char *s)
@@ -75,10 +98,13 @@ double	ft_atod(char *s)
 	dev = 1;
 	sign = 1;
 	doub = 0.0;
-	s = skip_space_or_signs(s, &sign);
-	integ = ft_atoi(s);
-	while (*s != '.')
+	integ = 0;
+	s = check_pars(s, &sign);
+	while (*s && *s != '.' && (*s >= '0' && *s <= '9'))
+	{
+		integ = (integ * 10) + (*s - '0');
 		++s;
+	}
 	if (*s == '.')
 		++s;
 	while (*s && (*s >= '0' && *s <= '9'))

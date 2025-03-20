@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:09:38 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 00:37:30 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:57:23 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	pixel_put(int x, int y, t_img *img, int color)
 
 void	mandel_or_juli(t_complex *z, t_complex *p, t_fractol *fractol)
 {
-	if (!ft_strncmp(fractol->name, "Julia", 5))
+	if (!ft_strncmp(fractol->name, "julia", 5))
 	{
 		p->x = fractol->julia_x;
 		p->y = fractol->julia_y;
