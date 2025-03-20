@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:10:44 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 00:35:32 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 01:25:05 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ char	*skip_space_or_signs(char *str, int *sign)
 	count = 0;
 	while (str[i])
 	{
+		if (str[i] != '.' || (str[i] < '0' || str[i] > '9'))
+			ft_error(1);
 		if (str[i] == '.')
 			++count;
 		++i;
