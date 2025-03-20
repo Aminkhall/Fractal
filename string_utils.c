@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:10:44 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 15:34:45 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:39:30 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	print_err(void)
 	ft_putstr(" | Press +/- keys to change the number of iterations       |\n");
 	ft_putstr(" | Use mouse scroll to zoom in and out of the fractal      |\n");
 	ft_putstr(" | Press Space to change the color of the fractal          |\n");
+	ft_putstr(" | Press ESC to close the window                           |\n");
 	ft_putstr(" +---------------------------------------------------------+\n");
 	ft_putstr("\n");
 	exit(1);
