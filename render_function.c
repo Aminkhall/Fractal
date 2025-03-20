@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:09:38 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 14:57:23 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:54:12 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ void	pixel_put(int x, int y, t_img *img, int color)
 {
 	int	pos;
 
-	pos = (y * img->line_length + x * (img->bits_per_pixel / 8));
-	*(unsigned int *)(img->addr + pos) = color;
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGTH)
+	{
+		pos = (y * img->line_length + x * (img->bits_per_pixel / 8));
+		*(unsigned int *)(img->addr + pos) = color;
+	}
 }
 
 void	mandel_or_juli(t_complex *z, t_complex *p, t_fractol *fractol)

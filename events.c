@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:04:06 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/19 22:49:24 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:52:37 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	key_hook(int keycode, t_fractol *fractol)
 		fractol->iterations_def -= 10;
 	else if (keycode == 49)
 		fractol->color += (fractol->color << 8);
+	if (fractol->iterations_def < 10)
+		fractol->iterations_def = 10;
 	fractol_render(fractol);
 	return (0);
 }

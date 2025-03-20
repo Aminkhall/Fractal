@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:46 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 15:35:42 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:46:33 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_error(void)
 {
-	perror("Somthing wrong with malloc");
+	perror("Error during initialization or memory allocation");
 	exit(1);
 }
 
