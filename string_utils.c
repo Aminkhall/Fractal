@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:10:44 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/19 22:31:51 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 00:35:32 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,19 @@ void	putstr_fd(char *str, int fd)
 
 char	*skip_space_or_signs(char *str, int *sign)
 {
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == '.')
+			++count;
+		++i;
+	}
+	if (count > 1)
+		ft_error(1);
 	while ((*str >= 9 && *str <= 13) || *str == ' ')
 		++str;
 	if (*str == '-')

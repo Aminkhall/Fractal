@@ -6,22 +6,25 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:46 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/19 22:45:22 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 00:36:02 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	ft_error(void)
+void	ft_error(int flag)
 {
-	perror("Something Wrong with malloc");
+	if (flag)
+		perror("Enter valid value");
+	else
+		perror("Somthing wrong with malloc");
 	exit(1);
 }
 
 void	data_init(t_fractol *fractol)
 {
 	fractol->escaped_val = 4;
-	fractol->iterations_def = 42;
+	fractol->iterations_def = 100;
 	fractol->shift_x = 0.0;
 	fractol->shift_y = 0.0;
 	fractol->zoom = 1.0;
@@ -42,20 +45,20 @@ void	fraclot_init(t_fractol *fractol)
 {
 	fractol->mlx_con = mlx_init();
 	if (!fractol->mlx_con)
-		ft_error();
+		ft_error(0);
 	fractol->mlx_window = mlx_new_window(fractol->mlx_con, WIDTH, HEIGTH,
 			fractol->name);
 	if (!fractol->mlx_window)
 	{
 		free(fractol->mlx_con);
-		ft_error();
+		ft_error(0);
 	}
 	fractol->img.img = mlx_new_image(fractol->mlx_con, WIDTH, HEIGTH);
 	if (!fractol->img.img)
 	{
 		mlx_destroy_window(fractol->mlx_con, fractol->mlx_window);
 		free(fractol->mlx_con);
-		ft_error();
+		ft_error(0);
 	}
 	fractol->img.addr = mlx_get_data_addr(fractol->img.img,
 			&fractol->img.bits_per_pixel, &fractol->img.line_length,

@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:55:04 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/19 23:11:34 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 00:36:51 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,6 @@ int			key_hook(int keycode, t_fractol *fractol);
 int			mouse_hook(int button, int x, int y, t_fractol *fractol);
 int			motion_notify(int x, int y, t_fractol *fractol);
 double		ft_atod(char *s);
+void		ft_error(int flag);
 
 #endif
