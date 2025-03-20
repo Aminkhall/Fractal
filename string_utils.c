@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:10:44 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 14:29:43 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 14:32:10 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,6 @@ int	ft_strncmp(char *s1, char *s2, int size)
 		--size;
 	}
 	return (*s1 - *s2);
-}
-
-void	putstr_fd(char *str, int fd)
-{
-	if (!str || fd < 0)
-		return ;
-	while (*str)
-	{
-		write(fd, &(*str), 1);
-		++str;
-	}
 }
 
 char	*skip_space_or_signs(char *str, int *sign)
