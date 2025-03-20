@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:55:04 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 15:35:27 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/20 15:54:49 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 
 # define HEIGTH 800
 # define WIDTH 800
-// # define ERROR_TEXT
 
 typedef struct s_complex
 {
