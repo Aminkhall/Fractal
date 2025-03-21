@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:10:44 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 15:39:30 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/21 22:59:34 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*check_pars(char *str, int *sign)
 			++count;
 		++i;
 	}
-	if (count > 1 || (count && i == 1))
+	if (!i || count > 1 || (count && i == 1))
 		print_err();
 	return (str);
 }
