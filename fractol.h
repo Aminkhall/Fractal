@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 21:55:04 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/21 23:25:43 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:27:37 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_complex
 
 # define BLACK       0x000000
 # define WHITE       0xFFFFFF
+# define GRAY_MEDIUM     0x808080
 
 typedef struct s_img
 {
@@ -59,13 +60,13 @@ typedef struct s_fractol
 }				t_fractol;
 
 int			ft_strncmp(char *s1, char *s2, int size);
-void		fraclot_init(t_fractol *fractol);
+void		fractol_init(t_fractol *fractol);
 double		scale_between(double unscaled_num, double min_allowed,
 				double max_allowed, double max);
 void		fractol_render(t_fractol *fractol);
 void		data_init(t_fractol *fractol);
 t_complex	add_complex(t_complex z1, t_complex z2);
-t_complex	square_complex(t_complex z);
+t_complex	square_complex(t_complex z, t_fractol *fractol);
 int			close_handler(t_fractol *fractol);
 int			key_hook(int keycode, t_fractol *fractol);
 int			mouse_hook(int button, int x, int y, t_fractol *fractol);

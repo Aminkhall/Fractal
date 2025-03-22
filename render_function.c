@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:09:38 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/21 23:26:10 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:46:27 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,20 +47,20 @@ void	handler_pixels(int x, int y, t_fractol *fractol)
 	i = 0;
 	z.x = (scale_between(x, -2, 2, WIDTH) * fractol->zoom) + fractol->shift_x;
 	z.y = (scale_between(y, -2, 2, HEIGTH) * fractol->zoom) + fractol->shift_y;
-	color = fractol->color;
 	mandel_or_juli(&z, &p, fractol);
 	while (i < fractol->iterations_def)
 	{
-		z = add_complex(square_complex(z), p);
+		z = add_complex(square_complex(z, fractol), p);
 		if ((z.x * z.x) + (z.y * z.y) > fractol->escaped_val)
 		{
-			color = scale_between(i, BLACK, WHITE, fractol->iterations_def);
+			color = scale_between(i, BLACK, fractol->color,
+					fractol->iterations_def);
 			pixel_put(x, y, &fractol->img, color);
 			return ;
 		}
 		++i;
 	}
-	pixel_put(x, y, &fractol->img, color);
+	pixel_put(x, y, &fractol->img, WHITE);
 }
 
 void	fractol_render(t_fractol *fractol)

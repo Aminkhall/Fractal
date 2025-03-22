@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:06:46 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/20 15:46:33 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:13:26 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	data_init(t_fractol *fractol)
 	fractol->shift_x = 0.0;
 	fractol->shift_y = 0.0;
 	fractol->zoom = 1.0;
-	fractol->color = WHITE;
+	fractol->color = GRAY_MEDIUM;
 	fractol->cursor_x = 0.0;
 	fractol->cursor_y = 0.0;
 }
@@ -38,7 +38,7 @@ void	event_init(t_fractol *fractol)
 	mlx_hook(fractol->mlx_window, 6, 0, motion_notify, fractol);
 }
 
-void	fraclot_init(t_fractol *fractol)
+void	fractol_init(t_fractol *fractol)
 {
 	fractol->mlx_con = mlx_init();
 	if (!fractol->mlx_con)

@@ -6,7 +6,7 @@
 /*   By: mkhallou <mkhallou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/19 22:10:44 by mkhallou          #+#    #+#             */
-/*   Updated: 2025/03/21 22:59:34 by mkhallou         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:34:39 by mkhallou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,13 @@ void	print_err(void)
 {
 	ft_putstr("\n");
 	ft_putstr(" +------------------ Let me help you! ---------------------+\n");
-	ft_putstr(" | Usage: ./fractol [mandelbrot / julia 'c_real' 'c_imag'  |\n");
+	ft_putstr(" | Usage: ./fractol [mandelbrot / julia 'c_real' 'c_imag'] |\n");
 	ft_putstr(" |                                                         |\n");
 	ft_putstr(" | e.g: ./fractol mandelbrot                               |\n");
 	ft_putstr(" |      ./fractol julia -0.4 0.6                           |\n");
+	ft_putstr(" |                                                         |\n");
+	ft_putstr(" | Bonus: ./fractol [tricorn]                              |\n");
+	ft_putstr(" | e.g: ./fractol tricorn                                  |\n");
 	ft_putstr(" |                                                         |\n");
 	ft_putstr(" |----------------------- KEYBOARD ------------------------|\n");
 	ft_putstr(" |                                                         |\n");
